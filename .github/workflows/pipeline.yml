@@ -34,3 +34,10 @@ jobs:
         if: ${{ github.event_name == 'push' }}
         run: |
           echo "Yeah, sure... I'm totally deploying it..."
+      - uses: actions/checkout@v2
+      - name: Bump version and push tag
+        uses: anothrNick/github-tag-action@1.33.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WITH_V: true
+          DEFAULT_BUMP: patch
